@@ -189,7 +189,12 @@ LivoxDriver::LivoxDriver(const rclcpp::NodeOptions & node_options)
     } while (0);
   }
 
-  poll_thread_ = std::make_shared<std::thread>(&LivoxDriver::pollThread, this);
+  // poll_thread_ = std::make_shared<std::thread>(&LivoxDriver::pollThread, this);
+
+  std::thread point_cloud_thread([&] { while (rclcpp::ok()) { lddc_ptr_->DistributeLidarData(); } });
+  point_cloud_thread.detach();
+  std::thread imu_thread([&] { while (rclcpp::ok()) { lddc_ptr_->DistributeImuData(); } });
+  imu_thread.detach();
 }
 
 LivoxDriver::~LivoxDriver()
