@@ -1,4 +1,6 @@
 # Build Guide
+
+## Install Livox-SDK
 ```bash
 cd ~/Downloads
 git clone https://github.com/Livox-SDK/Livox-SDK.git
@@ -8,6 +10,18 @@ cd build
 cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 make -j
 sudo make install
+```
+
+## Delete Livox-SDK
+```bash
+sudo rm /usr/local/lib/liblivox_sdk_static.a
+sudo rm /usr/local/include/livox_def.h
+sudo rm /usr/local/include/livox_sdk.h
+```
+
+## Build Package
+```bash
+colcon build --symlink-install
 ```
 
 # Livox ROS2 Driver([览沃ROS2驱动程序中文说明](https://github.com/Livox-SDK/livox_ros2_driver/blob/master/README_CN.md))
