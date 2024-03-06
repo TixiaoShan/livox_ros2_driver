@@ -29,7 +29,6 @@ message(STATUS "${PROJECT_NAME} version: ${LIVOX_ROS_DRIVER_VERSION}")
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 find_package(PCL REQUIRED)
-find_package(livox_sdk REQUIRED)
 
 # check apr
 find_package(PkgConfig)
@@ -40,7 +39,8 @@ if (APR_FOUND)
 endif (APR_FOUND)
 
 ## make sure the livox_sdk_static library is installed
-find_library(LIVOX_SDK_LIBRARY liblivox_sdk_static.a /usr/local/lib)
+set(livox_sdk_INCLUDE_DIRS /usr/local/include)
+set(livox_sdk_LIBRARIES /usr/local/lib/liblivox_sdk_static.a)
 
 ## PCL library
 link_directories(${PCL_LIBRARY_DIRS})

@@ -1,3 +1,15 @@
+# Build Guide
+```bash
+cd ~/Downloads
+git clone https://github.com/Livox-SDK/Livox-SDK.git
+cd Livox-SDK
+mkdir build
+cd build
+cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+make -j
+sudo make install
+```
+
 # Livox ROS2 Driver([览沃ROS2驱动程序中文说明](https://github.com/Livox-SDK/livox_ros2_driver/blob/master/README_CN.md))
 
 The Livox ROS2 driver is a driver package based on ROS2, specifically used to connect LiDAR products produced by Livox.
